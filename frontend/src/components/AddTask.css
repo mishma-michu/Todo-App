@@ -1,0 +1,33 @@
+.addTaskForm {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.addTaskForm input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.addTaskForm button {
+  padding: 10px 16px;
+  background: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.addTaskForm button:disabled {
+  background: #7abaff;
+  cursor: not-allowed;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+  margin-top: 5px;
+}
