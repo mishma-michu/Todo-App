@@ -13,10 +13,8 @@ app.use(express.json());
 
 app.use('/api/tasks', require('./routes/taskRoutes'));
 
-app.get('/', (req, res) => {
-  res.send('API running');
-});
+const PORT = process.env.PORT || 5000;
 
-app.listen(5000, () => {
-  console.log('Server running');
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
