@@ -26,14 +26,18 @@ function App() {
     fetchTasks();
   }, []);
 
-  // Update a single task
+  const addTaskLocally = newTask => {
+    setTasks(prev => [...prev, newTask]);
+  };
+
   const updateTaskLocally = updatedTask => {
     setTasks(prev =>
-      prev.map(task => (task._id === updatedTask._id ? updatedTask : task))
+      prev.map(task =>
+        task._id === updatedTask._id ? { ...task, ...updatedTask } : task
+      )
     );
   };
 
-  // Remove a task
   const removeTaskLocally = taskId => {
     setTasks(prev => prev.filter(task => task._id !== taskId));
   };
@@ -42,7 +46,7 @@ function App() {
     <div className="container">
       <h1>Todo App</h1>
 
-      <AddTask fetchTasks={fetchTasks} />
+      <AddTask addTaskLocally={addTaskLocally} />
 
       {loading && <p>Loading tasks...</p>}
       {error && <p className="error">{error}</p>}

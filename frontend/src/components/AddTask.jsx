@@ -2,27 +2,23 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './AddTask.css';
 
-function AddTask({ fetchTasks }) {
+function AddTask({ addTaskLocally }) {
   const [text, setText] = useState('');
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   const handleSubmit = async e => {
     e.preventDefault();
     if (!text.trim()) return;
 
-    setLoading(true);
     setError('');
 
     try {
-      await axios.post('http://localhost:5000/api/tasks', { text });
+      const res = await axios.post('http://localhost:5000/api/tasks', { text });
+      addTaskLocally(res.data);
       setText('');
-      fetchTasks();
     } catch {
       setError('Failed to add task');
     }
-
-    setLoading(false);
   };
 
   return (
@@ -33,11 +29,8 @@ function AddTask({ fetchTasks }) {
           placeholder="Enter task"
           value={text}
           onChange={e => setText(e.target.value)}
-          disabled={loading}
         />
-        <button type="submit" disabled={loading}>
-          {loading ? 'Adding...' : 'Add'}
-        </button>
+        <button type="submit">Add</button>
       </form>
       {error && <p className="error">{error}</p>}
     </>

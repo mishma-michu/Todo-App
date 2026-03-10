@@ -7,10 +7,14 @@
   border-radius: 6px;
   background: #f8f9fa;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition:
+    background 0.2s,
+    transform 0.1s;
 }
 
 .taskItem:hover {
   background: #e2e6ea;
+  transform: scale(1.01);
 }
 
 .taskItem span {
@@ -30,6 +34,12 @@
   font-size: 14px;
 }
 
+.taskItem input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+}
+
 .taskItem button {
   background: #dc3545;
   color: #fff;
@@ -37,10 +47,14 @@
   padding: 5px 8px;
   border-radius: 5px;
   cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.1s;
 }
 
 .taskItem button:hover {
   opacity: 0.9;
+  transform: scale(1.05);
 }
 
 .taskItem button:disabled {
